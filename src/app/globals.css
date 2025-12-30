@@ -111,6 +111,12 @@ html.lenis {
   animation: spin-slow 20s linear infinite;
 }
 
+/* Stroke text effect for marquee */
+.stroke-text {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  color: transparent;
+}
+
 /* Hide scrollbar for horizontal scroll on mobile */
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
