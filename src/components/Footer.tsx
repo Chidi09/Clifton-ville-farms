@@ -59,11 +59,14 @@ export default function Footer() {
             <ul className="space-y-4 text-gray-400 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-1 text-accent" size={18} />
-                <span>Lekki, Lagos State, Nigeria</span>
+                <span>Itori, Ewekoro LGA<br/>Abeokuta, Ogun State<br/>Nigeria</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="text-accent" size={18} />
-                <span>+234 800 123 4567</span>
+                <div className="flex flex-col">
+                  <span>+234 8125935055</span>
+                  <span className="text-xs">+447846324245</span>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="text-accent" size={18} />

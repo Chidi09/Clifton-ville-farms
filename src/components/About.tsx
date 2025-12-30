@@ -67,7 +67,7 @@ export default function About() {
             {/* Floating Badge on the image */}
             <div className="absolute bottom-6 left-6 z-20 bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
               <p className="text-white font-bold">100% Organic Seedlings</p>
-              <p className="text-accent text-sm">Lekki Farm Site</p>
+              <p className="text-accent text-sm">Abeokuta Farm Site</p>
             </div>
           </motion.div>
 

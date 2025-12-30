@@ -46,7 +46,7 @@ export default function ProductShowcase() {
 
             <div className="text-lg text-gray-600 mb-10 leading-relaxed max-w-md">
               <MaskedText delay={0.2}>
-                Our produce is cultivated with precision in Lekki's finest greenhouses. 
+                Our produce is cultivated with precision in Abeokuta's finest greenhouses. 
                 We ensure every Bell Pepper and Palm Kernel meets international export standards.
               </MaskedText>
             </div>

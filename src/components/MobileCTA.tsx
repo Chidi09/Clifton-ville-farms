@@ -28,7 +28,7 @@ export default function MobileCTA() {
             <span className="font-medium text-sm">Need fresh produce?</span>
             <div className="flex gap-2">
               <a 
-                href="tel:+2348001234567"
+                href="tel:+2348125935055"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors"
               >
                 <Phone size={18} />

@@ -52,7 +52,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
               <span className="text-white font-medium text-xs tracking-widest uppercase">
-                Live from Lekki
+                Live from Abeokuta
               </span>
             </motion.div>
 
