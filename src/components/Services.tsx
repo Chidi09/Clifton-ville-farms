@@ -45,7 +45,7 @@ const cardVariants = {
     opacity: 1, 
     y: 0,
     transition: {
-      type: "spring", // Physics-based movement (bouncy but subtle)
+      type: "spring" as const, // Physics-based movement (bouncy but subtle)
       stiffness: 100,
       damping: 20,
       duration: 0.8
