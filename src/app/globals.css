@@ -113,7 +113,7 @@ html.lenis {
 
 /* Stroke text effect for marquee */
 .stroke-text {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+  -webkit-text-stroke: 1px rgba(26, 77, 46, 0.3); /* Primary dark color for white background */
   color: transparent;
 }
 
