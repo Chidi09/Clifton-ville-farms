@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Sprout } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname(); // Get current page
 
   // Handle scroll effect for glassmorphism
   useEffect(() => {
@@ -16,20 +18,24 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // REAL ROUTES now, not anchors
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "#about" },
-    { name: "Products", href: "#products" },
-    { name: "Process", href: "#process" },
-    { name: "Contact", href: "#contact" },
+    { name: "About Us", href: "/about" },
+    { name: "Products", href: "/products" },
+    { name: "Services", href: "/services" },
+    { name: "Contact", href: "/contact" },
   ];
+
+  // Helper to check active state
+  const isActive = (path: string) => pathname === path;
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-md py-3"
-          : "bg-transparent py-5"
+        scrolled || pathname !== "/" // Always solid background on inner pages
+          ? "bg-primary-dark/95 backdrop-blur-md shadow-md py-4"
+          : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +57,7 @@ export default function Navbar() {
             <div className="bg-primary p-2 rounded-full text-white group-hover:bg-accent transition-colors hidden group-[.logo-fallback]:flex">
               <Sprout size={24} /> 
             </div>
-            <span className={`font-serif text-2xl font-bold tracking-tight ${scrolled ? 'text-primary-dark' : 'text-primary-dark'}`}>
+            <span className={`font-serif text-2xl font-bold tracking-tight ${pathname === "/" ? 'text-primary-dark' : 'text-white'}`}>
               Cliftonville<span className="text-accent">Farms</span>
             </span>
           </Link>
@@ -62,9 +68,17 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-primary-dark hover:text-accent font-medium transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-accent after:left-0 after:-bottom-1 hover:after:w-full after:transition-all"
+                className={`text-sm font-medium transition-colors relative hover:text-accent ${
+                  isActive(link.href) ? "text-accent" : pathname === "/" ? "text-primary-dark" : "text-white/90"
+                }`}
               >
                 {link.name}
+                {isActive(link.href) && (
+                  <motion.div
+                    layoutId="underline"
+                    className="absolute left-0 -bottom-1 w-full h-0.5 bg-accent"
+                  />
+                )}
               </Link>
             ))}
           </div>
@@ -73,7 +87,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-primary-dark hover:text-accent transition-colors"
+              className={pathname === "/" ? "text-primary-dark hover:text-accent transition-colors" : "text-white hover:text-accent transition-colors"}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -88,7 +102,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            className={`md:hidden ${pathname === "/" ? "bg-white border-t border-gray-100" : "bg-primary-dark border-t border-white/10"} overflow-hidden`}
           >
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navLinks.map((link) => (
@@ -96,7 +110,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-accent hover:bg-gray-50 rounded-md"
+                  className={`block px-3 py-3 text-base font-medium ${pathname === "/" ? "text-gray-700 hover:bg-gray-50" : "text-white/90 hover:bg-white/10"} hover:text-accent rounded-md`}
                 >
                   {link.name}
                 </Link>

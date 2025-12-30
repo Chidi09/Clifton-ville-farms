@@ -34,7 +34,7 @@ export default function MobileCTA() {
                 <Phone size={18} />
               </a>
               <a 
-                href="#contact"
+                href="/contact"
                 className="px-5 h-10 bg-accent text-primary-dark rounded-full flex items-center justify-center font-bold text-sm shadow-lg"
               >
                 Order

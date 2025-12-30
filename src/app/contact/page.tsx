@@ -1,16 +1,15 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import MobileCTA from "@/components/MobileCTA";
+import Contact from "@/components/Contact";
 
-// We keep Home simple: Just the Video Hero.
-export default function Home() {
+export default function ContactPage() {
   return (
     <main className="min-h-screen bg-surface-light">
       <Navbar />
-      <Hero />
+      <div className="pt-24">
+        <Contact />
+      </div>
       <Footer />
-      <MobileCTA />
     </main>
   );
 }
