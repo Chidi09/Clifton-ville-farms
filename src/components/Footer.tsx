@@ -1,19 +1,21 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter, MapPin, Phone, Mail, Sprout } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-dark text-white pt-20 pb-10">
+    <footer className="bg-primary-dark text-white pt-24 pb-12 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-1">
-            <div className="flex items-center gap-2 mb-6">
-               <Sprout className="text-accent" size={32} />
+            <Link href="/" className="flex items-center gap-3 mb-6">
+               <div className="w-10 h-10 flex items-center justify-center">
+                  <img src="/images/logo.png" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
+               </div>
                <span className="font-serif text-2xl font-bold">Cliftonville</span>
-            </div>
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Nigeria's trusted source for fresh bell peppers, livestock, and palm kernel processing. Committed to quality and sustainability.
             </p>

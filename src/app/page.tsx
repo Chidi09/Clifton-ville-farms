@@ -126,17 +126,20 @@ function ServiceCard({ title, desc, link, delay }: { title: string, desc: string
   )
 }
 
-// 3. PRODUCT SLIDER (PC View Enhanced)
+// 3. PRODUCT SLIDER (Fixed Scrolling Logic)
 function HomeProductSlider() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-40%"]);
+  
+  // INCREASED RANGE: -75% ensures we see the last card fully
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
 
   return (
-    <section ref={targetRef} className="bg-surface-sand h-[300vh] relative">
+    // Reduced height to 250vh to reduce dead space
+    <section ref={targetRef} className="bg-surface-sand h-[250vh] relative">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         
-        <div className="max-w-7xl mx-auto px-6 w-full mb-16">
+        <div className="max-w-7xl mx-auto px-6 w-full mb-12">
            <h2 className="text-5xl md:text-7xl font-serif font-bold text-primary-dark">
              Fresh Harvest.
            </h2>
@@ -145,14 +148,37 @@ function HomeProductSlider() {
            </p>
         </div>
 
-        <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[10vw]">
-           <ProductSlide img="/images/bell-peppers.jpg" title="Bell Peppers" tag="Best Seller" />
-           <ProductSlide img="/images/palm-kernel.jpg" title="Palm Kernel Oil" tag="Industrial" />
-           <ProductSlide img="/images/seedlings.jpg" title="Nursery Seedlings" tag="Organic" />
-           <ProductSlide img="/images/livestock.jpg" title="Livestock" tag="Free Range" />
+        {/* Slider Strip */}
+        <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[5vw]">
+           <ProductSlide 
+             img="/images/bell-peppers.jpg" 
+             title="Peppers" 
+             tag="Best Seller" 
+           />
+           <ProductSlide 
+             img="/images/palm-kernel.jpg" 
+             title="Palm Kernel Oil" 
+             tag="Industrial" 
+           />
+           <ProductSlide 
+             img="/images/seedlings.jpg" 
+             title="Nursery Seedlings" 
+             tag="Organic" 
+           />
+           <ProductSlide 
+             img="/images/livestock.jpg" 
+             title="Livestock" 
+             tag="Free Range" 
+           />
+           {/* Added a 5th card to ensure smooth ending or visual balance */}
+           <ProductSlide 
+             img="/images/fresh-greens.jpg" 
+             title="Fresh Greens" 
+             tag="Seasonal" 
+           />
         </motion.div>
         
-        <div className="absolute bottom-10 left-10 md:left-20">
+        <div className="absolute bottom-10 left-6 md:left-20">
            <Link href="/products" className="bg-primary-dark text-white px-10 py-5 rounded-full font-bold hover:bg-accent transition-colors shadow-xl">
              View Price List
            </Link>

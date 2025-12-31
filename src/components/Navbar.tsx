@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -8,7 +8,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -22,21 +29,32 @@ export default function Navbar() {
 
   return (
     <>
-      {/* DESKTOP & MOBILE WRAPPER */}
-      <nav className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4">
-        <div className="w-full max-w-7xl bg-primary-dark/80 backdrop-blur-md border border-white/10 shadow-2xl rounded-full px-6 py-4 flex justify-between items-center transition-all duration-300">
+      <nav 
+        className={`fixed z-50 left-0 right-0 transition-all duration-500 ease-in-out flex justify-center ${
+          scrolled 
+            ? "top-4 px-4" // Scrolled: Floats from top, has padding
+            : "top-0 px-0" // Top: Full width, no padding
+        }`}
+      >
+        <div 
+          className={`w-full transition-all duration-500 flex justify-between items-center ${
+            scrolled
+              ? "max-w-7xl bg-primary-dark/80 backdrop-blur-md border border-white/10 shadow-2xl rounded-full px-8 py-4" // The "Pill" Look
+              : "max-w-7xl bg-transparent border-transparent shadow-none px-8 py-8" // The "Normal" Look
+          }`}
+        >
           
-          {/* Logo */}
+          {/* Logo - Transparent, No Circle */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-full bg-white overflow-hidden flex items-center justify-center">
-               <img src="/images/logo.png" alt="Cliftonville" className="h-full w-full object-contain" />
+            <div className="w-12 h-12 flex items-center justify-center">
+               <img src="/images/logo.png" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
             </div>
             <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-tight">
               Cliftonville
             </span>
           </Link>
 
-          {/* Desktop Links (Always Visible White Text) */}
+          {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
@@ -66,7 +84,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE MENU DROPDOWN */}
+      {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
