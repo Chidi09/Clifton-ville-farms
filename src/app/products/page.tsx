@@ -40,8 +40,8 @@ export default function ProductsPage() {
                Check Availability <ArrowUpRight size={18} />
              </a>
           </div>
-          <div className="order-1 lg:order-2 h-[500px] rounded-[2.5rem] overflow-hidden">
-             <img src="/images/bell-peppers.jpg" className="w-full h-full object-cover" alt="Bell Peppers" />
+          <div className="order-1 lg:order-2 h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl">
+             <img src="/images/pepper-farm-1.jpg" className="w-full h-full object-cover" alt="Bell Peppers Farm" />
           </div>
         </div>
       </section>

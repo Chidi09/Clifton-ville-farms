@@ -131,12 +131,12 @@ function HomeProductSlider() {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
   
-  // INCREASED RANGE: -75% ensures we see the last card fully
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-75%"]);
+  // TRANSFORM: -85% ensures we see the last card fully before scrolling down
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
   return (
-    // Reduced height to 250vh to reduce dead space
-    <section ref={targetRef} className="bg-surface-sand h-[250vh] relative">
+    // HEIGHT: 300vh gives enough "time" for the scroll to happen
+    <section ref={targetRef} className="bg-surface-sand h-[300vh] relative">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         
         <div className="max-w-7xl mx-auto px-6 w-full mb-12">
@@ -148,29 +148,48 @@ function HomeProductSlider() {
            </p>
         </div>
 
-        {/* Slider Strip */}
+        {/* Slider Strip - Added padding left to start aligned */}
         <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[5vw]">
+           
+           {/* CARD 1: PEPPERS (Video Card) */}
+           <div className="relative w-[85vw] md:w-[40vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
+             {/* Using the REAL video you uploaded */}
+             <video 
+                src="/videos/pepper-farm.mp4" 
+                autoPlay loop muted playsInline 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+             />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+              <div className="absolute bottom-8 left-8 text-white">
+                <span className="bg-accent text-primary-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block">
+                  Best Seller
+                </span>
+                <h3 className="text-3xl md:text-5xl font-serif font-bold">Peppers</h3>
+              </div>
+           </div>
+
+           {/* CARD 2: PALM KERNEL (Using aerial shot) */}
            <ProductSlide 
-             img="/images/bell-peppers.jpg" 
-             title="Peppers" 
-             tag="Best Seller" 
-           />
-           <ProductSlide 
-             img="/images/palm-kernel.jpg" 
+             img="/images/palm-aerial.jpg"
              title="Palm Kernel Oil" 
              tag="Industrial" 
            />
+
+           {/* CARD 3: SEEDLINGS (Using pepper farm 2 close up) */}
            <ProductSlide 
-             img="/images/seedlings.jpg" 
+             img="/images/pepper-farm-2.jpg"
              title="Nursery Seedlings" 
              tag="Organic" 
            />
+
+           {/* CARD 4: LIVESTOCK */}
            <ProductSlide 
              img="/images/livestock.jpg" 
              title="Livestock" 
              tag="Free Range" 
            />
-           {/* Added a 5th card to ensure smooth ending or visual balance */}
+           
+           {/* CARD 5: VEGETABLES */}
            <ProductSlide 
              img="/images/fresh-greens.jpg" 
              title="Fresh Greens" 
@@ -190,7 +209,7 @@ function HomeProductSlider() {
 
 function ProductSlide({ img, title, tag }: { img: string, title: string, tag: string }) {
   return (
-    <div className="relative w-[85vw] md:w-[35vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer">
+    <div className="relative w-[85vw] md:w-[40vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
       <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
       <div className="absolute bottom-8 left-8 text-white">

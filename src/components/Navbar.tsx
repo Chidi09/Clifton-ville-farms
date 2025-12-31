@@ -11,6 +11,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Logic: Check if we are on the Home Page
+  const isHomePage = pathname === "/";
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
@@ -32,19 +35,21 @@ export default function Navbar() {
       <nav 
         className={`fixed z-50 left-0 right-0 transition-all duration-500 ease-in-out flex justify-center ${
           scrolled 
-            ? "top-4 px-4" // Scrolled: Floats from top, has padding
-            : "top-0 px-0" // Top: Full width, no padding
+            ? "top-4 px-4" 
+            : "top-0 px-0"
         }`}
       >
         <div 
           className={`w-full transition-all duration-500 flex justify-between items-center ${
             scrolled
-              ? "max-w-7xl bg-primary-dark/80 backdrop-blur-md border border-white/10 shadow-2xl rounded-full px-8 py-4" // The "Pill" Look
-              : "max-w-7xl bg-transparent border-transparent shadow-none px-8 py-8" // The "Normal" Look
+              ? "max-w-7xl bg-primary-dark/90 backdrop-blur-md border border-white/10 shadow-2xl rounded-full px-8 py-4" // SCROLLED STATE (Pill)
+              : isHomePage 
+                  ? "max-w-7xl bg-transparent px-8 py-6" // HOME TOP (Transparent)
+                  : "w-full bg-primary-dark/90 backdrop-blur-md px-8 py-6" // OTHER PAGES TOP (Dark Bar)
           }`}
         >
           
-          {/* Logo - Transparent, No Circle */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 flex items-center justify-center">
                <img src="/images/logo.png" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
