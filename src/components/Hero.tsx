@@ -2,7 +2,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react"; 
 import { MaskedText } from "./ui/MaskedText";
-import { useEffect, useRef } from "react"; // Import useRef and useEffect
+import { useEffect, useRef } from "react";
+import Link from "next/link"; // Import useRef and useEffect
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -84,10 +85,10 @@ export default function Hero() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-wrap gap-4 pt-4"
           >
-            <button className="bg-accent text-primary-dark px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition-all flex items-center gap-3">
+            <Link href="/products" className="bg-accent text-primary-dark px-10 py-5 rounded-full font-bold text-lg hover:bg-white transition-all flex items-center gap-3">
               Explore Products
               <ArrowRight size={20} />
-            </button>
+            </Link>
           </motion.div>
         </div>
       </div>
