@@ -21,7 +21,7 @@ export default function About() {
             Cultivating Excellence <br /> Since Inception
           </h2>
           <p className="mt-4 text-gray-200 text-lg max-w-2xl mx-auto">
-            Dominion Integrated Farms was established to solve food crises in Africa. Today, as Cliftonville Farms, we continue that legacy with modernized sustainable practices.
+            Cliftonville Farms was established to solve food crises in Africa through precision agriculture. We continue that mission with modernized sustainable practices.
           </p>
         </div>
 

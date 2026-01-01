@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F9F8F4;
-  --foreground: #123321;
+  --background: #F8FAFC;
+  --foreground: #0F172A;
   
-  /* Custom Cliftonville Farms Color Palette */
-  --primary: #1A4D2E;
-  --primary-light: #4F6F52;
-  --primary-dark: #123321;
-  --accent: #E89F29;
-  --accent-light: #F5C86B;
-  --surface-light: #F9F8F4;
-  --surface-sand: #EFEAD8;
+  /* NEW BRANDING: Royal Blue & Orange */
+  --primary: #1D4ED8; /* Royal Blue (Main Buttons/Text) */
+  --primary-light: #60A5FA; /* Sky Blue (Accents/Backgrounds) */
+  --primary-dark: #0F172A; /* Navy/Midnight (Footer/Navbar/Text) */
+  --accent: #F97316; /* Vibrant Orange (Call to Actions) */
+  --accent-light: #FDBA74; /* Soft Orange */
+  --surface-light: #F8FAFC; /* Cool White/Blue-ish Gray (Clean look) */
+  --surface-sand: #F1F5F9; /* Light Slate */
 }
 
 @theme inline {
@@ -77,10 +77,10 @@ html.lenis {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* 3. Selection Color - Make it Gold */
+/* 3. Selection Color - Royal Blue & Orange */
 ::selection {
-  background: #E89F29; /* Harvest Gold */
-  color: #1A4D2E; /* Deep Green */
+  background: #F97316; /* Vibrant Orange */
+  color: #0F172A; /* Navy */
 }
 
 /* Custom animation for slow bounce */
@@ -113,7 +113,7 @@ html.lenis {
 
 /* Stroke text effect for marquee */
 .stroke-text {
-  -webkit-text-stroke: 1px rgba(26, 77, 46, 0.3); /* Primary dark color for white background */
+  -webkit-text-stroke: 1px rgba(15, 23, 42, 0.3); /* Primary dark (Navy) for white background */
   color: transparent;
 }
 

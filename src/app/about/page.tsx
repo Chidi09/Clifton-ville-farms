@@ -26,7 +26,7 @@ export default function AboutPage() {
             <MaskedText className="text-primary" delay={0.2}>of African Agriculture.</MaskedText>
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
-            From our humble beginnings as Dominion Integrated Farms to becoming Cliftonville—Nigeria's premier automated greenhouse facility.
+            Cliftonville Farms is Nigeria's premier automated greenhouse facility, bridging the gap between traditional farming and modern food security.
           </p>
         </div>
       </section>
@@ -48,8 +48,8 @@ export default function AboutPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 to-transparent flex items-end p-10">
               <div className="text-white">
-                <p className="font-bold text-2xl">Abeokuta Farm Site</p>
-                <p className="opacity-80">150+ Acres of Operational Land</p>
+                <p className="font-bold text-2xl">Lekki & Abeokuta Sites</p>
+                <p className="opacity-80">100 Acres of Operational Land</p>
               </div>
             </div>
           </motion.div>
@@ -59,13 +59,13 @@ export default function AboutPage() {
             <h2 className="text-4xl font-serif font-bold">More Than Just a Farm.</h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Cliftonville Farms (formerly Dominion Integrated Farms) was established with a singular mission: to solve the food crisis in Africa. We realized that traditional farming wasn't enough. We needed precision.
+                Cliftonville Farms was established with a singular mission: to solve the food crisis in Africa through precision agriculture. We realized that traditional farming wasn't enough to feed a growing population—we needed technology.
               </p>
               <p>
-                Today, we operate one of the largest <strong>hydroponic greenhouse</strong> networks in Lagos and Ogun State. We don't just grow food; we engineer nutrition. Our controlled environments allow us to produce export-grade Bell Peppers all year round, defying the seasons.
+                Today, we operate one of the largest **hydroponic greenhouse** networks in Lagos and Ogun State. We don't just grow food; we engineer nutrition. Our controlled environments allow us to produce export-grade Peppers all year round, defying the seasons.
               </p>
               <p>
-                We also specialize in <strong>Palm Kernel Processing</strong>, turning raw harvest into high-grade industrial oil and sustainable by-products.
+                We also specialize in **Palm Kernel Processing**, turning raw harvest into high-grade industrial oil and sustainable by-products for the local market.
               </p>
             </div>
             
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <ValueCard 
               icon={<Award size={24} />} 
               title="Global Quality" 
-              desc="Our peppers match the crispness, size, and shelf-life of Dutch imports, but grown locally." 
+              desc="Our peppers match the crispness, size, and shelf-life of international imports, but grown locally." 
             />
             <ValueCard 
               icon={<Users size={24} />} 
@@ -118,8 +118,8 @@ export default function AboutPage() {
 function Stat({ label, value }: { label: string, value: string }) {
   return (
     <div className="border-l-2 border-accent pl-6">
-      <h4 className="text-3xl font-bold text-primary-dark">{value}</h4>
-      <p className="text-gray-500 text-sm uppercase tracking-wide mt-1">{label}</p>
+      <h4 className="text-3xl font-bold text-white md:text-primary-dark">{value}</h4>
+      <p className="text-gray-400 md:text-gray-500 text-sm uppercase tracking-wide mt-1">{label}</p>
     </div>
   )
 }
@@ -130,11 +130,11 @@ function ValueCard({ icon, title, desc }: { icon: any, title: string, desc: stri
       whileHover={{ y: -10 }}
       className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl"
     >
-      <div className="w-12 h-12 bg-accent text-primary-dark rounded-full flex items-center justify-center mb-6">
+      <div className="w-12 h-12 bg-accent text-white rounded-full flex items-center justify-center mb-6">
         {icon}
       </div>
       <h3 className="text-2xl font-bold mb-4">{title}</h3>
-      <p className="text-gray-400 leading-relaxed">{desc}</p>
+      <p className="text-gray-300 leading-relaxed">{desc}</p>
     </motion.div>
   )
 }
