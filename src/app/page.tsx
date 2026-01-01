@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { MaskedText } from "@/components/ui/MaskedText";
@@ -129,14 +129,25 @@ function ServiceCard({ title, desc, link, delay }: { title: string, desc: string
 // 3. PRODUCT SLIDER (Fixed Scrolling Logic)
 function HomeProductSlider() {
   const targetRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
   
-  // TRANSFORM: -85% ensures we see the last card fully before scrolling down
+  // Adjusted Range: Since we reduced height, we adjust the speed
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
 
+  // FORCE iOS AUTOPLAY for slider video
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true; // Crucial: Set property directly
+      videoRef.current.play().catch((error) => {
+        console.error("Autoplay prevented:", error);
+      });
+    }
+  }, []);
+
   return (
-    // HEIGHT: 300vh gives enough "time" for the scroll to happen
-    <section ref={targetRef} className="bg-surface-sand h-[300vh] relative">
+    // FIX: Reduced height from 300vh to 200vh to kill the dead space
+    <section ref={targetRef} className="bg-surface-sand h-[200vh] relative">
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         
         <div className="max-w-7xl mx-auto px-6 w-full mb-12">
@@ -148,16 +159,17 @@ function HomeProductSlider() {
            </p>
         </div>
 
-        {/* Slider Strip - Added padding left to start aligned */}
+        {/* Slider Strip */}
         <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[5vw]">
            
            {/* CARD 1: PEPPERS (Video Card) */}
            <div className="relative w-[85vw] md:w-[40vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
-             {/* Using the REAL video you uploaded */}
              <video 
+                ref={videoRef}
                 src="/videos/pepper-farm.mp4" 
                 autoPlay loop muted playsInline 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                style={{ pointerEvents: 'none' }}
              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
               <div className="absolute bottom-8 left-8 text-white">

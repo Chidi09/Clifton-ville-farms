@@ -1,11 +1,23 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react"; 
 import { MaskedText } from "./ui/MaskedText";
+import { useEffect, useRef } from "react"; // Import useRef and useEffect
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 200]);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // FORCE iOS AUTOPLAY
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true; // Crucial: Set property directly
+      videoRef.current.play().catch((error) => {
+        console.error("Autoplay prevented:", error);
+      });
+    }
+  }, []);
 
   return (
     <section className="relative w-full h-screen min-h-[700px] flex items-center overflow-hidden">
@@ -13,14 +25,19 @@ export default function Hero() {
       {/* VIDEO BACKGROUND */}
       <motion.div style={{ y }} className="absolute inset-0 w-full h-full z-0">
         <video 
+          ref={videoRef} // Attach ref
           autoPlay 
           loop 
           muted 
           playsInline 
           className="object-cover w-full h-full scale-105"
+          // This CSS hides the default play button on iOS if it fails to load
+          style={{ pointerEvents: 'none' }} 
         >
           <source src="/videos/hero-farm.mp4" type="video/mp4" />
         </video>
+        
+        {/* Overlays */}
         <div className="absolute inset-0 bg-primary-dark/50 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark/30" />
       </motion.div>
