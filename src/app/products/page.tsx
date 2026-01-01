@@ -92,7 +92,7 @@ export default function ProductsPage() {
              </button>
           </div>
           <div className="order-1 lg:order-2 h-[500px] rounded-[2.5rem] overflow-hidden">
-             <img src="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Garlic" />
+             <img src="/images/garlic closeup image.jpg" className="w-full h-full object-cover" alt="Garlic" />
           </div>
         </div>
       </section>

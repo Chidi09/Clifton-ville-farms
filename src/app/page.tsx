@@ -156,7 +156,7 @@ function SlidingContent() {
         tag="Organic" 
       />
       <ProductCard 
-        img="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" 
+        img="/images/garlic.jpg" 
         title="Garlic" 
         tag="Spice" 
       />

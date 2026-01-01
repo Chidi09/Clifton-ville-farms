@@ -111,7 +111,7 @@ export default function ProductShowcase() {
               height="h-[300px]"
             />
             <ProductCard 
-              img="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" 
+              img="/images/garlic.jpg" 
               title="Garlic" 
               subtitle="Premium Quality"
               height="h-[400px]"
