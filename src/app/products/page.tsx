@@ -36,15 +36,17 @@ export default function ProductsPage() {
         </div>
       </section>
 
-       {/* 2. PALM KERNEL OIL (Title Only) */}
+       {/* 2. PALM KERNEL OIL */}
        <section className="py-20 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
            <div className="h-[500px] rounded-[2.5rem] overflow-hidden bg-gray-100 relative shadow-2xl">
               <img src="/images/palm-aerial.jpg" className="w-full h-full object-cover" alt="Palm Kernel" />
           </div>
           <div className="flex flex-col justify-center items-start">
-             <h2 className="text-5xl font-serif font-bold mb-8">Palm Kernel Oil (PKO)</h2>
-             
+             <h2 className="text-5xl font-serif font-bold mb-6">Palm Kernel Oil (PKO)</h2>
+             <p className="text-lg text-gray-600 mb-8">
+               Pure extracted oil for industrial applications and feed formulation.
+             </p>
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Request Quote <ArrowUpRight size={18} />
              </button>
@@ -52,12 +54,14 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 3. VEGETABLES & GARLIC (Title Only) */}
+      {/* 3. VEGETABLES & GARLIC */}
       <section className="py-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1 flex flex-col justify-center items-start">
-             <h2 className="text-5xl font-serif font-bold mb-8">Vegetables & Garlic</h2>
-             
+             <h2 className="text-5xl font-serif font-bold mb-6">Vegetables & Garlic</h2>
+             <p className="text-lg text-gray-600 mb-8">
+               Organic vegetables and high-quality garlic grown in nutrient-rich soil.
+             </p>
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Contact Sales <ArrowUpRight size={18} />
              </button>
@@ -68,15 +72,17 @@ export default function ProductsPage() {
         </div>
       </section>
 
-       {/* 4. NURSERY SEEDLINGS (Title Only) */}
+       {/* 4. NURSERY SEEDLINGS */}
        <section className="py-20 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
            <div className="h-[500px] rounded-[2.5rem] overflow-hidden bg-gray-100 relative shadow-2xl">
               <img src="/images/pepper-farm-2.jpg" className="w-full h-full object-cover" alt="Seedlings" />
           </div>
           <div className="flex flex-col justify-center items-start">
-             <h2 className="text-5xl font-serif font-bold mb-8">Nursery Seedlings</h2>
-             
+             <h2 className="text-5xl font-serif font-bold mb-6">Nursery Seedlings</h2>
+             <p className="text-lg text-gray-600 mb-8">
+               Disease-resistant, high-yield seedlings raised in our controlled nursery environment.
+             </p>
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Order Seedlings <ArrowUpRight size={18} />
              </button>
