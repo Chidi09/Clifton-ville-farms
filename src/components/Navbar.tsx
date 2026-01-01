@@ -42,10 +42,10 @@ export default function Navbar() {
         <div 
           className={`w-full transition-all duration-500 flex justify-between items-center ${
             scrolled
-              ? "max-w-7xl bg-primary-dark/90 backdrop-blur-md border border-white/10 shadow-2xl rounded-full px-8 py-4" // SCROLLED STATE (Pill)
+              ? "max-w-7xl bg-primary-dark/60 backdrop-blur-xl border border-white/10 shadow-2xl rounded-full px-8 py-4" // CHANGED: /90 -> /60 for high transparency
               : isHomePage 
-                  ? "max-w-7xl bg-transparent px-8 py-6" // HOME TOP (Transparent)
-                  : "w-full bg-primary-dark/90 backdrop-blur-md px-8 py-6" // OTHER PAGES TOP (Dark Bar)
+                  ? "max-w-7xl bg-transparent px-8 py-6"
+                  : "w-full bg-primary-dark/80 backdrop-blur-md px-8 py-6"
           }`}
         >
           

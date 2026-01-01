@@ -4,9 +4,9 @@ import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { MaskedText } from "@/components/ui/MaskedText";
 
 export default function Home() {
@@ -126,111 +126,103 @@ function ServiceCard({ title, desc, link, delay }: { title: string, desc: string
   )
 }
 
-// 3. PRODUCT SLIDER (Fixed Scrolling Logic)
+// 3. PRODUCT SLIDER (Optimized Performance)
 function HomeProductSlider() {
   const targetRef = useRef(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
   
-  // Adjusted Range: Since we reduced height, we adjust the speed
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-85%"]);
-
-  // FORCE iOS AUTOPLAY for slider video
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true; // Crucial: Set property directly
-      videoRef.current.play().catch((error) => {
-        console.error("Autoplay prevented:", error);
-      });
-    }
-  }, []);
+  // Desktop Transform: Slower, smoother range
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
 
   return (
-    // FIX: Reduced height from 300vh to 200vh to kill the dead space
-    <section ref={targetRef} className="bg-surface-sand h-[200vh] relative">
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        
-        <div className="max-w-7xl mx-auto px-6 w-full mb-12">
-           <h2 className="text-5xl md:text-7xl font-serif font-bold text-primary-dark">
-             Fresh Harvest.
-           </h2>
-           <p className="text-gray-600 mt-6 text-xl max-w-lg">
-             Scroll to explore our premium produce available for bulk purchase.
-           </p>
+    <section ref={targetRef} className="bg-surface-sand relative">
+      
+      {/* SECTION HEADER */}
+      <div className="pt-24 px-6 max-w-7xl mx-auto mb-12">
+          <h2 className="text-5xl md:text-7xl font-serif font-bold text-primary-dark">
+            Fresh Harvest.
+          </h2>
+          <p className="text-gray-600 mt-6 text-xl max-w-lg">
+            Scroll to explore our premium produce available for bulk purchase.
+          </p>
+      </div>
+
+      {/* --- DESKTOP VIEW (Scroll Effect) --- */}
+      <div className="hidden md:block h-[200vh] relative">
+        <div className="sticky top-[20vh] overflow-hidden">
+          <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[5vw] will-change-transform">
+            <ProductCards />
+          </motion.div>
         </div>
+      </div>
 
-        {/* Slider Strip */}
-        <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[5vw]">
-           
-           {/* CARD 1: PEPPERS (Video Card) */}
-           <div className="relative w-[85vw] md:w-[40vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
-             <video 
-                ref={videoRef}
-                src="/videos/pepper-farm.mp4" 
-                autoPlay loop muted playsInline 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                style={{ pointerEvents: 'none' }}
-             />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
-              <div className="absolute bottom-8 left-8 text-white">
-                <span className="bg-accent text-primary-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block">
-                  Best Seller
-                </span>
-                <h3 className="text-3xl md:text-5xl font-serif font-bold">Peppers</h3>
-              </div>
-           </div>
-
-           {/* CARD 2: PALM KERNEL (Using aerial shot) */}
-           <ProductSlide 
-             img="/images/palm-aerial.jpg" // The aerial shot you uploaded
-             title="Palm Kernel Oil" 
-             tag="Industrial" 
-           />
-
-           {/* CARD 3: SEEDLINGS (Using pepper farm 2 close up) */}
-           <ProductSlide 
-             img="/images/pepper-farm-2.jpg" // The close up rows
-             title="Nursery Seedlings" 
-             tag="Organic" 
-           />
-
-           {/* CARD 4: LIVESTOCK */}
-           <ProductSlide 
-             img="https://images.unsplash.com/photo-1595855793933-d0763a22841a?q=80&w=1000&auto=format&fit=crop" 
-             title="Livestock" 
-             tag="Free Range" 
-           />
-           
-           {/* CARD 5: VEGETABLES */}
-           <ProductSlide 
-             img="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=1000&auto=format&fit=crop" 
-             title="Fresh Greens" 
-             tag="Seasonal" 
-           />
-        </motion.div>
-        
-        <div className="absolute bottom-10 left-6 md:left-20">
+      {/* --- MOBILE VIEW (Native Horizontal Scroll - 100% Smooth) --- */}
+      <div className="md:hidden overflow-x-auto snap-x snap-mandatory flex gap-4 px-4 pb-12 scrollbar-hide">
+         <ProductCards mobile />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-6 pb-24 mt-12">
            <Link href="/products" className="bg-primary-dark text-white px-10 py-5 rounded-full font-bold hover:bg-accent transition-colors shadow-xl">
              View Price List
            </Link>
-        </div>
       </div>
     </section>
   )
 }
 
-function ProductSlide({ img, title, tag }: any) {
+// Reusable list of cards to ensure content matches on both views
+function ProductCards({ mobile }: { mobile?: boolean }) {
+  // Styles based on view
+  const cardClass = mobile 
+    ? "relative w-[85vw] h-[50vh] rounded-[2rem] overflow-hidden flex-shrink-0 snap-center shadow-lg border border-white/20"
+    : "relative w-[400px] h-[500px] rounded-[3rem] overflow-hidden flex-shrink-0 shadow-2xl border border-white/20 hover:scale-105 transition-transform duration-500";
+
   return (
-    <div className="relative w-[85vw] md:w-[40vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
-      <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+    <>
+      {/* 1. PEPPERS */}
+      <div className={cardClass}>
+         <img src="/images/pepper-farm-1.jpg" className="w-full h-full object-cover" alt="Peppers" />
+         <Overlay title="Peppers" tag="Best Seller" />
+      </div>
+
+      {/* 2. PALM KERNEL */}
+      <div className={cardClass}>
+         <img src="/images/palm-aerial.jpg" className="w-full h-full object-cover" alt="Palm Kernel" />
+         <Overlay title="Palm Kernel" tag="Industrial" />
+      </div>
+
+      {/* 3. VEGETABLES */}
+      <div className={cardClass}>
+         <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Vegetables" />
+         <Overlay title="Vegetables" tag="Organic" />
+      </div>
+
+      {/* 4. GARLIC */}
+      <div className={cardClass}>
+         <img src="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Garlic" />
+         <Overlay title="Garlic" tag="Spice" />
+      </div>
+
+       {/* 5. SEEDLINGS */}
+       <div className={cardClass}>
+         <img src="/images/pepper-farm-2.jpg" className="w-full h-full object-cover" alt="Seedlings" />
+         <Overlay title="Nursery" tag="Seedlings" />
+      </div>
+    </>
+  )
+}
+
+function Overlay({ title, tag }: { title: string, tag: string }) {
+  return (
+    <>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
       <div className="absolute bottom-8 left-8 text-white">
         <span className="bg-accent text-primary-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block">
           {tag}
         </span>
-        <h3 className="text-3xl md:text-5xl font-serif font-bold">{title}</h3>
+        <h3 className="text-3xl font-serif font-bold">{title}</h3>
       </div>
-    </div>
+    </>
   )
 }
 

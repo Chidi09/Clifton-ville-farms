@@ -22,25 +22,34 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen min-h-[700px] flex items-center overflow-hidden">
       
-      {/* VIDEO BACKGROUND */}
-      <motion.div style={{ y }} className="absolute inset-0 w-full h-full z-0">
+      {/* 1. DESKTOP VIDEO (Hidden on Mobile) */}
+      <motion.div style={{ y }} className="hidden md:block absolute inset-0 w-full h-full z-0">
         <video 
-          ref={videoRef} // Attach ref
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
+          ref={videoRef}
+          autoPlay loop muted playsInline 
           className="object-cover w-full h-full scale-105"
-          // This CSS hides the default play button on iOS if it fails to load
           style={{ pointerEvents: 'none' }} 
         >
           <source src="/videos/hero-farm.mp4" type="video/mp4" />
         </video>
-        
-        {/* Overlays */}
         <div className="absolute inset-0 bg-primary-dark/50 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark/30" />
       </motion.div>
+
+      {/* 2. MOBILE PHOTO (Zoom Effect) */}
+      <div className="md:hidden absolute inset-0 w-full h-full z-0 overflow-hidden">
+        <motion.img 
+          src="/images/pepper-farm-1.jpg"
+          alt="Farm Background"
+          className="object-cover w-full h-full"
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.15 }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "linear" }}
+        />
+         <div className="absolute inset-0 bg-primary-dark/50 mix-blend-multiply" />
+      </div>
+
+      {/* Gradient Overlay (Both) */}
+      <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-primary-dark/30 z-0" />
 
       {/* CONTENT */}
       <div className="max-w-[1400px] mx-auto px-6 relative z-10 w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -54,7 +63,7 @@ export default function Hero() {
           >
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
             <span className="text-white font-medium text-xs tracking-widest uppercase">
-              Live from Abeokuta
+              Live from Ogun State
             </span>
           </motion.div>
 
@@ -65,7 +74,7 @@ export default function Hero() {
           
           <div className="max-w-lg text-lg text-gray-200 leading-relaxed">
             <MaskedText delay={0.4} className="text-lg">
-              See the scale of our operations. From our mechanized tractors to our export-ready containers, Cliftonville is feeding the nation.
+              See the scale of our operations in Abeokuta. From mechanized tractors to export-ready containers, Cliftonville is feeding the nation.
             </MaskedText>
           </div>
           
