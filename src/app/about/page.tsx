@@ -14,9 +14,10 @@ export default function AboutPage() {
       <section className="relative pt-40 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
           
-          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark leading-[0.85] md:leading-[0.9]">
-            <MaskedText className="block">Cultivating the Future</MaskedText>
-            <MaskedText className="block text-primary -mt-1 md:-mt-2" delay={0.2}>of African Agriculture.</MaskedText>
+          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark">
+            <MaskedText>Cultivating the Future</MaskedText>
+            <br />
+            <MaskedText className="text-primary" delay={0.2}>of African Agriculture.</MaskedText>
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
             Cliftonville Farms is Ogun State's premier automated greenhouse facility, bridging the gap between traditional farming and modern food security.
@@ -47,7 +48,7 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Text Side (Updated Content) */}
+          {/* Text Side */}
           <div className="space-y-8">
             <h2 className="text-4xl font-serif font-bold text-primary-dark">More Than Just a Farm.</h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
@@ -62,10 +63,7 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-6 pt-6">
-              <Stat label="Annual Harvest" value="25M+ Tons" />
-              <Stat label="Partner Farms" value="50+" />
-            </div>
+            {/* STATS SECTION REMOVED COMPLETELY */}
           </div>
         </div>
       </section>
@@ -107,15 +105,6 @@ export default function AboutPage() {
 }
 
 // Sub-components
-function Stat({ label, value }: { label: string, value: string }) {
-  return (
-    <div className="border-l-2 border-accent pl-6">
-      <h4 className="text-3xl font-bold text-white md:text-primary-dark">{value}</h4>
-      <p className="text-gray-400 md:text-gray-500 text-sm uppercase tracking-wide mt-1">{label}</p>
-    </div>
-  )
-}
-
 function ValueCard({ icon, title, desc }: { icon: any, title: string, desc: string }) {
   return (
     <motion.div 

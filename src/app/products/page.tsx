@@ -20,20 +20,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 1. PEPPERS (GENERIC & SAFE) */}
+      {/* 1. PEPPERS (Title Only) */}
       <section className="py-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1">
-             {/* JUST "PEPPERS" */}
-             <h2 className="text-4xl font-serif font-bold mb-6">Peppers</h2>
+          <div className="order-2 lg:order-1 flex flex-col justify-center items-start">
+             <h2 className="text-5xl font-serif font-bold mb-8">Peppers</h2>
              
-             {/* GENERIC DESCRIPTION - NO SPECS */}
-             <p className="text-lg text-gray-600 mb-8">
-               High-quality, farm-fresh peppers grown in our controlled greenhouses. We ensure consistent supply and premium freshness for supermarkets, hotels, and markets.
-             </p>
-
-             {/* REMOVED THE TABLE (EXTRA P) COMPLETELY */}
-
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Check Availability <ArrowUpRight size={18} />
              </button>
@@ -44,25 +36,15 @@ export default function ProductsPage() {
         </div>
       </section>
 
-       {/* 2. PALM KERNEL OIL */}
+       {/* 2. PALM KERNEL OIL (Title Only) */}
        <section className="py-20 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
            <div className="h-[500px] rounded-[2.5rem] overflow-hidden bg-gray-100 relative shadow-2xl">
               <img src="/images/palm-aerial.jpg" className="w-full h-full object-cover" alt="Palm Kernel" />
           </div>
-          <div>
-             <h2 className="text-4xl font-serif font-bold mb-6">Palm Kernel Oil (PKO)</h2>
-             <p className="text-lg text-gray-600 mb-8">
-               Pure extracted oil for industrial applications. We also supply Palm Kernel Cake (PKC) for feed formulation.
-             </p>
-
-             {/* Kept this simple table as requested previously, but can remove if needed */}
-             <div className="bg-surface-light rounded-2xl p-6 shadow-sm border border-gray-100 mb-8">
-               <Row label="Product" value="Crude PKO" />
-               <Row label="By-Product" value="PKC (Cake)" />
-               <Row label="Supply" value="Bulk / Drums" />
-             </div>
-
+          <div className="flex flex-col justify-center items-start">
+             <h2 className="text-5xl font-serif font-bold mb-8">Palm Kernel Oil (PKO)</h2>
+             
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Request Quote <ArrowUpRight size={18} />
              </button>
@@ -70,15 +52,12 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* 3. VEGETABLES & GARLIC */}
+      {/* 3. VEGETABLES & GARLIC (Title Only) */}
       <section className="py-20 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1">
-             <h2 className="text-4xl font-serif font-bold mb-6">Vegetables & Garlic</h2>
-             <p className="text-lg text-gray-600 mb-8">
-               Organic vegetables and high-quality garlic grown in nutrient-rich soil in Ogun State.
-             </p>
-
+          <div className="order-2 lg:order-1 flex flex-col justify-center items-start">
+             <h2 className="text-5xl font-serif font-bold mb-8">Vegetables & Garlic</h2>
+             
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Contact Sales <ArrowUpRight size={18} />
              </button>
@@ -89,18 +68,15 @@ export default function ProductsPage() {
         </div>
       </section>
 
-       {/* 4. NURSERY SEEDLINGS */}
+       {/* 4. NURSERY SEEDLINGS (Title Only) */}
        <section className="py-20 border-t border-gray-200 bg-white">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
            <div className="h-[500px] rounded-[2.5rem] overflow-hidden bg-gray-100 relative shadow-2xl">
               <img src="/images/pepper-farm-2.jpg" className="w-full h-full object-cover" alt="Seedlings" />
           </div>
-          <div>
-             <h2 className="text-4xl font-serif font-bold mb-6">Nursery Seedlings</h2>
-             <p className="text-lg text-gray-600 mb-8">
-               Disease-resistant, high-yield seedlings raised in our controlled nursery environment for other farmers.
-             </p>
-
+          <div className="flex flex-col justify-center items-start">
+             <h2 className="text-5xl font-serif font-bold mb-8">Nursery Seedlings</h2>
+             
              <button className="bg-primary-dark text-white px-8 py-4 rounded-full font-bold flex items-center gap-2 hover:bg-accent transition-colors">
                Order Seedlings <ArrowUpRight size={18} />
              </button>
@@ -111,13 +87,4 @@ export default function ProductsPage() {
       <Footer />
     </main>
   );
-}
-
-function Row({ label, value }: { label: string, value: string }) {
-  return (
-    <div className="flex justify-between py-3 border-b border-gray-200 last:border-0">
-      <span className="text-gray-500 font-medium">{label}</span>
-      <span className="text-primary-dark font-bold">{value}</span>
-    </div>
-  )
 }
