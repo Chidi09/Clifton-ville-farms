@@ -13,11 +13,11 @@ export default function AboutPage() {
       {/* 1. HERO SECTION */}
       <section className="relative pt-40 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          {/* Removed "Since 2015" Badge */}
           
-          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark leading-[0.85]">
-            <MaskedText className="block">Cultivating the Future</MaskedText>
-            <MaskedText className="block text-primary -mt-2" delay={0.2}>of African Agriculture.</MaskedText>
+          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark">
+            <MaskedText>Cultivating the Future</MaskedText>
+            <br />
+            <MaskedText className="text-primary" delay={0.2}>of African Agriculture.</MaskedText>
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
             Cliftonville Farms is Ogun State's premier automated greenhouse facility, bridging the gap between traditional farming and modern food security.
@@ -48,18 +48,18 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Text Side */}
+          {/* Text Side (Updated Content) */}
           <div className="space-y-8">
             <h2 className="text-4xl font-serif font-bold text-primary-dark">More Than Just a Farm.</h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Cliftonville Farms was established with a singular mission: to solve the food crisis in Africa through precision agriculture. We operate exclusively in **Ogun State**, utilizing the fertile land to feed the nation.
+                Cliftonville Farms was established with a singular mission: to solve the food crisis in Africa through precision agriculture. We operate exclusively in Ogun State, utilizing the fertile land to feed the nation.
               </p>
               <p>
-                We operate one of the largest **hydroponic greenhouse** networks in the region. We don't just grow food; we engineer nutrition. Our controlled environments allow us to produce export-grade Peppers, Garlic, and Vegetables all year round.
+                We don't just grow food; we engineer nutrition. Our controlled environments allow us to produce export-grade Peppers, Garlic, and Vegetables all year round, defying the seasons.
               </p>
               <p>
-                We also specialize in **Palm Kernel Processing**, turning raw harvest into high-grade industrial oil and sustainable by-products.
+                We also specialize in Palm Kernel Processing, turning raw harvest into high-grade industrial oil and sustainable by-products.
               </p>
             </div>
             
