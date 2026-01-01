@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { MaskedText } from "@/components/ui/MaskedText";
-import { Target, Leaf, Users, Award, TrendingUp, Sun } from "lucide-react";
+import { Leaf, Users, Award } from "lucide-react";
 
 export default function AboutPage() {
   return (
@@ -13,25 +13,20 @@ export default function AboutPage() {
       {/* 1. HERO SECTION */}
       <section className="relative pt-40 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-block mb-4 px-4 py-1 rounded-full border border-accent/50 text-accent font-medium text-sm uppercase tracking-widest"
-          >
-            Since 2015
-          </motion.div>
-          <h1 className="text-fluid-h1 font-serif font-bold mb-8">
+          {/* Removed "Since 2015" Badge */}
+          
+          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark">
             <MaskedText>Cultivating the Future</MaskedText>
             <br />
             <MaskedText className="text-primary" delay={0.2}>of African Agriculture.</MaskedText>
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
-            Cliftonville Farms is Nigeria's premier automated greenhouse facility, bridging the gap between traditional farming and modern food security.
+            Cliftonville Farms is Ogun State's premier automated greenhouse facility, bridging the gap between traditional farming and modern food security.
           </p>
         </div>
       </section>
 
-      {/* 2. THE STORY (Split Layout) */}
+      {/* 2. THE STORY */}
       <section className="py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Image Side */}
@@ -42,13 +37,13 @@ export default function AboutPage() {
             className="relative h-[600px] rounded-[3rem] overflow-hidden shadow-2xl group"
           >
             <img 
-              src="/images/seedlings.jpg"
+              src="/images/seedlings.jpg" 
               alt="Cliftonville Seedlings" 
               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/80 to-transparent flex items-end p-10">
               <div className="text-white">
-                <p className="font-bold text-2xl">Lekki & Abeokuta Sites</p>
+                <p className="font-bold text-2xl">Ogun State Site</p>
                 <p className="opacity-80">100 Acres of Operational Land</p>
               </div>
             </div>
@@ -56,16 +51,16 @@ export default function AboutPage() {
 
           {/* Text Side */}
           <div className="space-y-8">
-            <h2 className="text-4xl font-serif font-bold">More Than Just a Farm.</h2>
+            <h2 className="text-4xl font-serif font-bold text-primary-dark">More Than Just a Farm.</h2>
             <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
               <p>
-                Cliftonville Farms was established with a singular mission: to solve the food crisis in Africa through precision agriculture. We realized that traditional farming wasn't enough to feed a growing population—we needed technology.
+                Cliftonville Farms was established with a singular mission: to solve the food crisis in Africa through precision agriculture. We operate exclusively in **Ogun State**, utilizing the fertile land to feed the nation.
               </p>
               <p>
-                Today, we operate one of the largest **hydroponic greenhouse** networks in Lagos and Ogun State. We don't just grow food; we engineer nutrition. Our controlled environments allow us to produce export-grade Peppers all year round, defying the seasons.
+                We operate one of the largest **hydroponic greenhouse** networks in the region. We don't just grow food; we engineer nutrition. Our controlled environments allow us to produce export-grade Peppers, Garlic, and Vegetables all year round.
               </p>
               <p>
-                We also specialize in **Palm Kernel Processing**, turning raw harvest into high-grade industrial oil and sustainable by-products for the local market.
+                We also specialize in **Palm Kernel Processing**, turning raw harvest into high-grade industrial oil and sustainable by-products.
               </p>
             </div>
             
@@ -77,9 +72,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 3. VALUES GRID (Glass Cards) */}
+      {/* 3. VALUES GRID */}
       <section className="py-24 bg-primary-dark text-white relative overflow-hidden">
-        {/* Abstract Background Noise */}
         <div className="absolute inset-0 bg-noise opacity-10"></div>
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -91,19 +85,19 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ValueCard 
-              icon={<Leaf size={24} />} 
+              icon={<Leaf />} 
               title="Sustainability" 
               desc="We use 90% less water than traditional farming through our closed-loop drip irrigation systems." 
             />
             <ValueCard 
-              icon={<Award size={24} />} 
+              icon={<Award />} 
               title="Global Quality" 
-              desc="Our peppers match the crispness, size, and shelf-life of international imports, but grown locally." 
+              desc="Our peppers and garlic match the crispness, size, and shelf-life of international imports." 
             />
             <ValueCard 
-              icon={<Users size={24} />} 
+              icon={<Users />} 
               title="Community" 
-              desc="We train local farmers in modern agronomy, lifting entire communities out of poverty." 
+              desc="We train local farmers in Ogun State in modern agronomy, lifting communities out of poverty." 
             />
           </div>
         </div>
@@ -114,7 +108,7 @@ export default function AboutPage() {
   );
 }
 
-// Sub-components for cleaner code
+// Sub-components
 function Stat({ label, value }: { label: string, value: string }) {
   return (
     <div className="border-l-2 border-accent pl-6">

@@ -23,11 +23,11 @@ export default function Contact() {
             </h2>
             <p className="text-gray-400 text-lg mb-12 max-w-md leading-relaxed">
               Interested in bulk purchase or partnership? 
-              Visit our farm in Abeokuta or send us a message directly.
+              Visit our farm in Ogun State or send us a message directly.
             </p>
 
             <div className="space-y-8">
-              <ContactItem icon={<MapPin size={20} />} title="Visit Us" text="Itori, Ewekoro LGA, Abeokuta, Ogun State, Nigeria" />
+              <ContactItem icon={<MapPin size={20} />} title="Visit Us" text="Itori, Ewekoro LGA, Ogun State, Nigeria" />
               <ContactItem icon={<Mail size={20} />} title="Email" text="info@cliftonvillefarms.com" />
               <ContactItem icon={<Phone size={20} />} title="Call" text="+234 8125935055" />
               <ContactItem icon={<Phone size={20} />} title="International" text="+447846324245" />

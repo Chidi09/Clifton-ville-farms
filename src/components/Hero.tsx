@@ -74,7 +74,7 @@ export default function Hero() {
           
           <div className="max-w-lg text-lg text-gray-200 leading-relaxed">
             <MaskedText delay={0.4} className="text-lg">
-              See the scale of our operations in Abeokuta. From mechanized tractors to export-ready containers, Cliftonville is feeding the nation.
+              See the scale of our operations in Ogun State. From mechanized tractors to export-ready containers, Cliftonville is feeding the nation.
             </MaskedText>
           </div>
           

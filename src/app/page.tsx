@@ -3,8 +3,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import MobileCTA from "@/components/MobileCTA";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { MaskedText } from "@/components/ui/MaskedText";
@@ -15,7 +14,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <MarqueeSection />
-      {/* Changed background to Dark to fix visibility issues */}
       <HomeServices /> 
       <HomeProductSlider />
       <HomeCTA />
@@ -25,9 +23,7 @@ export default function Home() {
   );
 }
 
-/* --- SUB-COMPONENTS --- */
-
-// 1. MARQUEE (Button Removed)
+// 1. MARQUEE
 function MarqueeSection() {
   return (
     <section className="py-16 bg-white overflow-hidden whitespace-nowrap relative border-b border-gray-100">
@@ -51,13 +47,11 @@ function MarqueeSection() {
   );
 }
 
-// 2. HOME SERVICES (Dark Background for Visibility)
+// 2. HOME SERVICES
 function HomeServices() {
   return (
     <section className="py-32 px-6 bg-primary-dark text-white relative">
-      {/* Background Texture */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <div className="max-w-xl">
@@ -70,29 +64,11 @@ function HomeServices() {
             View Full Process <ArrowRight size={18} />
           </Link>
         </div>
-
-        {/* High Contrast Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-           <ServiceCard 
-             title="Greenhouse" 
-             desc="Climate-controlled environments for consistent year-round Bell Pepper production."
-             link="/services"
-             delay={0}
-           />
-           <ServiceCard 
-             title="Processing" 
-             desc="Industrial-grade Palm Kernel Oil extraction and sustainable byproduct management."
-             link="/services"
-             delay={0.2}
-           />
-           <ServiceCard 
-             title="Consultancy" 
-             desc="Expert advisory for investors entering the Nigerian agricultural sector."
-             link="/services"
-             delay={0.4}
-           />
+           <ServiceCard title="Greenhouse" desc="Climate-controlled environments for consistent year-round production." link="/services" delay={0} />
+           <ServiceCard title="Processing" desc="Industrial-grade Palm Kernel Oil extraction and byproduct management." link="/services" delay={0.2} />
+           <ServiceCard title="Consultancy" desc="Expert advisory for investors entering the Nigerian agricultural sector." link="/services" delay={0.4} />
         </div>
-
         <div className="mt-12 md:hidden">
           <Link href="/services" className="flex items-center gap-2 text-accent font-bold">
             View Full Process <ArrowRight size={18} />
@@ -103,7 +79,7 @@ function HomeServices() {
   )
 }
 
-function ServiceCard({ title, desc, link, delay }: { title: string, desc: string, link: string, delay: number }) {
+function ServiceCard({ title, desc, link, delay }: any) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -114,7 +90,6 @@ function ServiceCard({ title, desc, link, delay }: { title: string, desc: string
       className="bg-white text-primary-dark p-10 rounded-[2rem] shadow-2xl hover:shadow-accent/20 transition-all group relative overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-[100px] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-      
       <div className="relative z-10">
         <h3 className="text-3xl font-serif font-bold mb-4">{title}</h3>
         <p className="text-gray-600 mb-8 leading-relaxed h-20">{desc}</p>
@@ -126,42 +101,30 @@ function ServiceCard({ title, desc, link, delay }: { title: string, desc: string
   )
 }
 
-// 3. PRODUCT SLIDER (Optimized Performance)
+// 3. PRODUCT SLIDER (Seamless Marquee - No Gaps)
 function HomeProductSlider() {
-  const targetRef = useRef(null);
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  
-  // Desktop Transform: Slower, smoother range
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
-
   return (
-    <section ref={targetRef} className="bg-surface-sand relative">
+    <section className="bg-surface-sand py-24 relative overflow-hidden">
       
-      {/* SECTION HEADER */}
-      <div className="pt-24 px-6 max-w-7xl mx-auto mb-12">
+      <div className="px-6 max-w-7xl mx-auto mb-12">
           <h2 className="text-5xl md:text-7xl font-serif font-bold text-primary-dark">
             Fresh Harvest.
           </h2>
           <p className="text-gray-600 mt-6 text-xl max-w-lg">
-            Scroll to explore our premium produce available for bulk purchase.
+            Our premium produce available for bulk purchase in Ogun State.
           </p>
       </div>
 
-      {/* --- DESKTOP VIEW (Scroll Effect) --- */}
-      <div className="hidden md:block h-[200vh] relative">
-        <div className="sticky top-[20vh] overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-8 px-6 w-max pl-[5vw] will-change-transform">
-            <ProductCards />
-          </motion.div>
+      {/* CONTINUOUS SLIDER */}
+      <div className="relative w-full overflow-hidden">
+        <div className="flex gap-8 w-max">
+           {/* We double the array to create a seamless loop effect */}
+           <SlidingContent />
+           <SlidingContent />
         </div>
       </div>
-
-      {/* --- MOBILE VIEW (Native Horizontal Scroll - 100% Smooth) --- */}
-      <div className="md:hidden overflow-x-auto snap-x snap-mandatory flex gap-4 px-4 pb-12 scrollbar-hide">
-         <ProductCards mobile />
-      </div>
       
-      <div className="max-w-7xl mx-auto px-6 pb-24 mt-12">
+      <div className="max-w-7xl mx-auto px-6 mt-16">
            <Link href="/products" className="bg-primary-dark text-white px-10 py-5 rounded-full font-bold hover:bg-accent transition-colors shadow-xl">
              View Price List
            </Link>
@@ -170,51 +133,46 @@ function HomeProductSlider() {
   )
 }
 
-// Reusable list of cards to ensure content matches on both views
-function ProductCards({ mobile }: { mobile?: boolean }) {
-  // Styles based on view
-  const cardClass = mobile 
-    ? "relative w-[85vw] h-[50vh] rounded-[2rem] overflow-hidden flex-shrink-0 snap-center shadow-lg border border-white/20"
-    : "relative w-[400px] h-[500px] rounded-[3rem] overflow-hidden flex-shrink-0 shadow-2xl border border-white/20 hover:scale-105 transition-transform duration-500";
-
+function SlidingContent() {
   return (
-    <>
-      {/* 1. PEPPERS */}
-      <div className={cardClass}>
-         <img src="/images/pepper-farm-1.jpg" className="w-full h-full object-cover" alt="Peppers" />
-         <Overlay title="Peppers" tag="Best Seller" />
-      </div>
-
-      {/* 2. PALM KERNEL */}
-      <div className={cardClass}>
-         <img src="/images/palm-aerial.jpg" className="w-full h-full object-cover" alt="Palm Kernel" />
-         <Overlay title="Palm Kernel" tag="Industrial" />
-      </div>
-
-      {/* 3. VEGETABLES */}
-      <div className={cardClass}>
-         <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Vegetables" />
-         <Overlay title="Vegetables" tag="Organic" />
-      </div>
-
-      {/* 4. GARLIC */}
-      <div className={cardClass}>
-         <img src="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" className="w-full h-full object-cover" alt="Garlic" />
-         <Overlay title="Garlic" tag="Spice" />
-      </div>
-
-       {/* 5. SEEDLINGS */}
-       <div className={cardClass}>
-         <img src="/images/pepper-farm-2.jpg" className="w-full h-full object-cover" alt="Seedlings" />
-         <Overlay title="Nursery" tag="Seedlings" />
-      </div>
-    </>
+    <motion.div 
+      animate={{ x: ["0%", "-100%"] }}
+      transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      className="flex gap-8 px-4"
+    >
+      <ProductCard 
+        img="/images/pepper-farm-1.jpg" 
+        title="Peppers" 
+        tag="Best Seller" 
+      />
+      <ProductCard 
+        img="/images/palm-aerial.jpg" 
+        title="Palm Kernel" 
+        tag="Industrial" 
+      />
+      <ProductCard 
+        img="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=1000&auto=format&fit=crop" 
+        title="Vegetables" 
+        tag="Organic" 
+      />
+      <ProductCard 
+        img="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" 
+        title="Garlic" 
+        tag="Spice" 
+      />
+      <ProductCard 
+        img="/images/pepper-farm-2.jpg" 
+        title="Nursery" 
+        tag="Seedlings" 
+      />
+    </motion.div>
   )
 }
 
-function Overlay({ title, tag }: { title: string, tag: string }) {
+function ProductCard({ img, title, tag }: any) {
   return (
-    <>
+    <div className="relative w-[300px] md:w-[400px] h-[450px] md:h-[500px] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
+      <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
       <div className="absolute bottom-8 left-8 text-white">
         <span className="bg-accent text-primary-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 inline-block">
@@ -222,14 +180,14 @@ function Overlay({ title, tag }: { title: string, tag: string }) {
         </span>
         <h3 className="text-3xl font-serif font-bold">{title}</h3>
       </div>
-    </>
+    </div>
   )
 }
 
 // 4. CTA
 function HomeCTA() {
   return (
-    <section className="py-32 px-6 bg-white text-center relative overflow-hidden">
+    <section className="py-24 px-6 bg-white text-center relative overflow-hidden">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-5xl md:text-7xl font-serif font-bold mb-8 text-primary-dark">
           Start Your Order.

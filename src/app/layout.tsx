@@ -14,8 +14,8 @@ const playfair = Playfair_Display({
 // SEO Metadata - Crucial for Google Ranking
 export const metadata: Metadata = {
   title: "Cliftonville Farms | Premium Pepper, Vegetable & Palm Kernel",
-  description: "Nigeria's leading integrated farm specializing in Bell Peppers, sustainable vegetable farming, and Palm Kernel processing.",
-  keywords: "Bell Peppers Nigeria, Palm Kernel, Vegetable Farm, Cliftonville, Agriculture",
+  description: "Nigeria's leading integrated farm specializing in Peppers, sustainable vegetable farming, and Palm Kernel processing.",
+  keywords: "Peppers Nigeria, Palm Kernel, Vegetable Farm, Cliftonville, Agriculture",
 };
 
 export default function RootLayout({

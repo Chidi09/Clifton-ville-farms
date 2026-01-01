@@ -6,7 +6,7 @@ import { MaskedText } from "./ui/MaskedText";
 const services = [
   {
     title: "Pepper Farming",
-    description: "Specialized greenhouse cultivation of premium Red, Yellow, and Green Bell Peppers tailored for the Nigerian market.",
+    description: "Specialized greenhouse cultivation of premium Red, Yellow, and Green Peppers tailored for the Nigerian market.",
     icon: <Sprout strokeWidth={1.5} size={32} />,
     color: "text-green-600",
     bg: "bg-green-100/50",

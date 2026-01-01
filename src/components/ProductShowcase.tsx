@@ -46,15 +46,15 @@ export default function ProductShowcase() {
 
             <div className="text-lg text-gray-600 mb-10 leading-relaxed max-w-md">
               <MaskedText delay={0.2}>
-                Our produce is cultivated with precision in Abeokuta's finest greenhouses. 
-                We ensure every Bell Pepper and Palm Kernel meets international export standards.
+                Our produce is cultivated with precision in Ogun State's finest greenhouses. 
+                We ensure every Pepper and Palm Kernel meets international export standards.
               </MaskedText>
             </div>
 
             {/* Feature List with Staggered Reveal */}
             <div className="space-y-5 mb-12">
               {[
-                "Premium Bell Peppers (Red, Yellow, Green)",
+                "Premium Peppers (Red, Yellow, Green)",
                 "High-Grade Palm Kernel Oil",
                 "Sustainable Packaging Solutions"
               ].map((item, idx) => (
@@ -89,13 +89,13 @@ export default function ProductShowcase() {
           {/* Column 1 (Slower) */}
           <motion.div style={{ y: y1 }} className="flex flex-col gap-6 pt-20">
             <ProductCard 
-              img="/images/bell-peppers.jpg" 
-              title="Bell Peppers" 
+              img="/images/pepper-farm-1.jpg" 
+              title="Peppers" 
               subtitle="Crisp & Colorful"
               height="h-[400px]"
             />
             <ProductCard 
-              img="/images/palm-kernel.jpg" 
+              img="/images/palm-aerial.jpg" 
               title="Palm Kernel" 
               subtitle="Industrial Grade"
               height="h-[300px]"
@@ -105,15 +105,15 @@ export default function ProductShowcase() {
           {/* Column 2 (Faster - Creates Depth) */}
           <motion.div style={{ y: y2 }} className="flex flex-col gap-6">
              <ProductCard 
-              img="/images/fresh-greens.jpg" 
-              title="Fresh Greens" 
+              img="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?q=80&w=1000&auto=format&fit=crop" 
+              title="Vegetables" 
               subtitle="Organic & Clean"
               height="h-[300px]"
             />
             <ProductCard 
-              img="/images/livestock.jpg" 
-              title="Livestock" 
-              subtitle="Healthy & Raised Right"
+              img="https://images.unsplash.com/photo-1615477916527-31e9c855a9c9?q=80&w=1000&auto=format&fit=crop" 
+              title="Garlic" 
+              subtitle="Premium Quality"
               height="h-[400px]"
             />
           </motion.div>
