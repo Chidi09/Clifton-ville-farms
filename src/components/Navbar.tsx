@@ -52,7 +52,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 flex items-center justify-center">
-               <img src="/images/logo.png" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
+               <img src="/images/logo.jpg" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
             </div>
             <span className="font-serif text-xl md:text-2xl font-bold text-white tracking-tight">
               Cliftonville

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6">
                <div className="w-10 h-10 flex items-center justify-center">
-                  <img src="/images/logo.png" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
+                  <img src="/images/logo.jpg" alt="Cliftonville" className="h-full w-full object-contain mix-blend-screen" />
                </div>
                <span className="font-serif text-2xl font-bold">Cliftonville</span>
             </Link>

@@ -170,28 +170,28 @@ function HomeProductSlider() {
 
            {/* CARD 2: PALM KERNEL (Using aerial shot) */}
            <ProductSlide 
-             img="/images/palm-aerial.jpg"
+             img="/images/palm-aerial.jpg" // The aerial shot you uploaded
              title="Palm Kernel Oil" 
              tag="Industrial" 
            />
 
            {/* CARD 3: SEEDLINGS (Using pepper farm 2 close up) */}
            <ProductSlide 
-             img="/images/pepper-farm-2.jpg"
+             img="/images/pepper-farm-2.jpg" // The close up rows
              title="Nursery Seedlings" 
              tag="Organic" 
            />
 
            {/* CARD 4: LIVESTOCK */}
            <ProductSlide 
-             img="/images/livestock.jpg" 
+             img="https://images.unsplash.com/photo-1595855793933-d0763a22841a?q=80&w=1000&auto=format&fit=crop" 
              title="Livestock" 
              tag="Free Range" 
            />
            
            {/* CARD 5: VEGETABLES */}
            <ProductSlide 
-             img="/images/fresh-greens.jpg" 
+             img="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=1000&auto=format&fit=crop" 
              title="Fresh Greens" 
              tag="Seasonal" 
            />
@@ -207,7 +207,7 @@ function HomeProductSlider() {
   )
 }
 
-function ProductSlide({ img, title, tag }: { img: string, title: string, tag: string }) {
+function ProductSlide({ img, title, tag }: any) {
   return (
     <div className="relative w-[85vw] md:w-[40vw] h-[50vh] rounded-[3rem] overflow-hidden flex-shrink-0 group shadow-lg cursor-pointer border border-white/20">
       <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
