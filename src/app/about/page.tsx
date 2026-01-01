@@ -14,10 +14,9 @@ export default function AboutPage() {
       <section className="relative pt-40 pb-20 px-6">
         <div className="max-w-7xl mx-auto text-center">
           
-          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark">
-            <MaskedText>Cultivating the Future</MaskedText>
-            <br />
-            <MaskedText className="text-primary" delay={0.2}>of African Agriculture.</MaskedText>
+          <h1 className="text-fluid-h1 font-serif font-bold mb-8 text-primary-dark leading-[0.85] md:leading-[0.9]">
+            <MaskedText className="block">Cultivating the Future</MaskedText>
+            <MaskedText className="block text-primary -mt-1 md:-mt-2" delay={0.2}>of African Agriculture.</MaskedText>
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 leading-relaxed">
             Cliftonville Farms is Ogun State's premier automated greenhouse facility, bridging the gap between traditional farming and modern food security.
