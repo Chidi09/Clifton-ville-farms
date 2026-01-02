@@ -44,6 +44,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/icon.svg' }, // Fallback for Apple devices using the same file
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "en_NG",
